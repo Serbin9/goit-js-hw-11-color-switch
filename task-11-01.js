@@ -20,15 +20,19 @@ const randomIntegerFromInterval = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 // изменение цвета фона через Setinterval кнопка Start при клике на кнопку=========================================
-startChange.addEventListener('click', ()=>{
+
+
+startChange.addEventListener('click', changeColor);
+function changeColor(event){
   interval = setInterval(() => {
     bodyList.style.backgroundColor = colors[randomIntegerFromInterval(min, max)];
     
   }, 1000);
   startChange.disabled = true;
-})
+};
 // кнопка  остановки смены цвета Stop при клике ================================
-stopChange.addEventListener('click', ()=>{
-  clearInterval(interval);
-  startChange.disabled = false;
-});
+stopChange.addEventListener('click', stop);
+function stop(event){
+    clearInterval(interval);
+    startChange.disabled = false;
+  };
